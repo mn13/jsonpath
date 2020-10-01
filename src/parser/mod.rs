@@ -711,9 +711,7 @@ mod parser_tests {
         }
     }
 
-    fn setup() {
-        // let _ = env_logger::try_init();
-    }
+    fn setup() {}
 
     fn run(input: &str) -> Result<Vec<ParseToken>, String> {
         let mut interpreter = NodeVisitorTestImpl::new(input);
@@ -1238,9 +1236,7 @@ mod parser_tests {
 mod tokenizer_tests {
     use parser::tokenizer::{Token, TokenError, TokenReader, Tokenizer};
 
-    fn setup() {
-        let _ = env_logger::try_init();
-    }
+    fn setup() {}
 
     fn collect_token(input: &str) -> (Vec<Token>, Option<TokenError>) {
         let mut tokenizer = Tokenizer::new(input);

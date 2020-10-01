@@ -1,4 +1,3 @@
-extern crate env_logger;
 extern crate jsonpath_lib as jsonpath;
 extern crate serde_json;
 
@@ -9,9 +8,7 @@ use serde_json::Value;
 use self::jsonpath::Selector;
 
 #[allow(dead_code)]
-pub fn setup() {
-    let _ = env_logger::try_init();
-}
+pub fn setup() {}
 
 #[allow(dead_code)]
 pub fn read_json(path: &str) -> Value {

@@ -18,7 +18,7 @@ travis-ci = { repository = "freestrings/jsonpath", branch = "master" }
 
 [dependencies]
 # log = "0.4"
-env_logger = "0.7"
+# env_logger = "0.7"
 # serde = { version = "1.0", features = ["derive"] }
 serde = { version = "1.0.100", default-features = false, package = "alt_serde" }
 serde_json = {git = "https://github.com/nikvolf/json", default-features = false, features = ["alloc"]}
