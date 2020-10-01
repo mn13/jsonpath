@@ -122,66 +122,66 @@ impl<'a> ExprTerm<'a> {
     }
 
     pub fn eq(&self, other: &Self, ret: &mut Option<ExprTerm<'a>>) {
-        debug!("eq - {:?} : {:?}", &self, &other);
+        
         let _ = ret.take();
         let tmp = self.cmp(other, &CmpEq, &CmpEq);
-        debug!("eq = {:?}", tmp);
+        
         *ret = Some(tmp);
     }
 
     pub fn ne(&self, other: &Self, ret: &mut Option<ExprTerm<'a>>) {
-        debug!("ne - {:?} : {:?}", &self, &other);
+        
         let _ = ret.take();
         let tmp = self.cmp(other, &CmpNe, &CmpNe);
-        debug!("ne = {:?}", tmp);
+        
         *ret = Some(tmp);
     }
 
     pub fn gt(&self, other: &Self, ret: &mut Option<ExprTerm<'a>>) {
-        debug!("gt - {:?} : {:?}", &self, &other);
+        
         let _ = ret.take();
         let tmp = self.cmp(other, &CmpGt, &CmpLt);
-        debug!("gt = {:?}", tmp);
+        
         *ret = Some(tmp);
     }
 
     pub fn ge(&self, other: &Self, ret: &mut Option<ExprTerm<'a>>) {
-        debug!("ge - {:?} : {:?}", &self, &other);
+        
         let _ = ret.take();
         let tmp = self.cmp(other, &CmpGe, &CmpLe);
-        debug!("ge = {:?}", tmp);
+        
         *ret = Some(tmp);
     }
 
     pub fn lt(&self, other: &Self, ret: &mut Option<ExprTerm<'a>>) {
-        debug!("lt - {:?} : {:?}", &self, &other);
+        
         let _ = ret.take();
         let tmp = self.cmp(other, &CmpLt, &CmpGt);
-        debug!("lt = {:?}", tmp);
+        
         *ret = Some(tmp);
     }
 
     pub fn le(&self, other: &Self, ret: &mut Option<ExprTerm<'a>>) {
-        debug!("le - {:?} : {:?}", &self, &other);
+        
         let _ = ret.take();
         let tmp = self.cmp(other, &CmpLe, &CmpGe);
-        debug!("le = {:?}", tmp);
+        
         *ret = Some(tmp);
     }
 
     pub fn and(&self, other: &Self, ret: &mut Option<ExprTerm<'a>>) {
-        debug!("and - {:?} : {:?}", &self, &other);
+        
         let _ = ret.take();
         let tmp = self.cmp(other, &CmpAnd, &CmpAnd);
-        debug!("and = {:?}", tmp);
+        
         *ret = Some(tmp);
     }
 
     pub fn or(&self, other: &Self, ret: &mut Option<ExprTerm<'a>>) {
-        debug!("or - {:?} : {:?}", &self, &other);
+        
         let _ = ret.take();
         let tmp = self.cmp(other, &CmpOr, &CmpOr);
-        debug!("or = {:?}", tmp);
+        
         *ret = Some(tmp);
     }
 }

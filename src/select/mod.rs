@@ -67,7 +67,7 @@ struct FilterTerms<'a>(Vec<Option<ExprTerm<'a>>>);
 impl<'a> FilterTerms<'a> {
     fn new_filter_context(&mut self) {
         self.0.push(None);
-        debug!("new_filter_context: {:?}", self.0);
+        
     }
 
     fn is_term_empty(&self) -> bool {
@@ -88,7 +88,7 @@ impl<'a> FilterTerms<'a> {
         e: ExprTerm<'a>,
         fun: F,
     ) {
-        debug!("filter_json_term: {:?}", e);
+        
 
         if let ExprTerm::Json(rel, fk, vec) = e {
             let mut tmp = Vec::new();
@@ -125,7 +125,7 @@ impl<'a> FilterTerms<'a> {
         current: &Option<Vec<&'a Value>>,
         fun: F,
     ) {
-        debug!("push_json_term: {:?}", &current);
+        
 
         if let Some(current) = &current {
             let mut tmp = Vec::new();
@@ -155,7 +155,7 @@ impl<'a> FilterTerms<'a> {
             FilterKey::All
         });
 
-        debug!("filter_all_with_str : {}, {:?}", key, self.0);
+        
     }
 
     fn filter_next_with_str(&mut self, current: &Option<Vec<&'a Value>>, key: &str) {
@@ -189,7 +189,7 @@ impl<'a> FilterTerms<'a> {
             FilterKey::String(key.to_owned())
         });
 
-        debug!("filter_next_with_str : {}, {:?}", key, self.0);
+        
     }
 
     fn collect_next_with_num(&mut self, current: &Option<Vec<&'a Value>>, index: f64) -> Option<Vec<&'a Value>> {
@@ -226,11 +226,6 @@ impl<'a> FilterTerms<'a> {
             }
         }
 
-        debug!(
-            "collect_next_with_num : {:?}, {:?}",
-            &index, &current
-        );
-
         None
     }
 
@@ -255,7 +250,7 @@ impl<'a> FilterTerms<'a> {
             return Some(tmp);
         }
 
-        debug!("collect_next_all : {:?}", &current);
+        
 
         None
     }
@@ -281,11 +276,6 @@ impl<'a> FilterTerms<'a> {
             }
         }
 
-        debug!(
-            "collect_next_with_str : {:?}, {:?}",
-            keys, &current
-        );
-
         None
     }
 
@@ -295,7 +285,7 @@ impl<'a> FilterTerms<'a> {
             ValueWalker::all(&current, &mut tmp);
             return Some(tmp);
         }
-        debug!("collect_all: {:?}", &current);
+        
 
         None
     }
@@ -307,7 +297,7 @@ impl<'a> FilterTerms<'a> {
             return Some(tmp);
         }
 
-        debug!("collect_all_with_str: {}, {:?}", key, &current);
+        
 
         None
     }
@@ -319,7 +309,7 @@ impl<'a> FilterTerms<'a> {
             return Some(tmp);
         }
 
-        debug!("collect_all_with_num: {}, {:?}", index, &current);
+        
 
         None
     }
@@ -342,7 +332,7 @@ impl<'a, 'b> Selector<'a, 'b> {
     }
 
     pub fn str_path(&mut self, path: &str) -> Result<&mut Self, JsonPathError> {
-        debug!("path : {}", path);
+        
         self.node_ref.take();
         self.node = Some(Parser::compile(path).map_err(JsonPathError::Path)?);
         Ok(self)
@@ -742,7 +732,7 @@ impl<'a, 'b> Selector<'a, 'b> {
 
 impl<'a, 'b> NodeVisitor for Selector<'a, 'b> {
     fn visit_token(&mut self, token: &ParseToken) {
-        debug!("token: {:?}, stack: {:?}", token, self.tokens);
+        
 
         if self.compute_absolute_path_filter(token) {
             return;
@@ -768,7 +758,7 @@ impl<'a, 'b> NodeVisitor for Selector<'a, 'b> {
             ParseToken::Range(from, to, step) => self.visit_range(from, to, step),
             ParseToken::Union(indices) => self.visit_union(indices),
             ParseToken::Eof => {
-                debug!("visit_token eof");
+                
             }
         }
     }
@@ -860,7 +850,6 @@ impl SelectorMut {
             visited: &mut HashSet<*const Value>,
             visited_order: &mut Vec<Vec<String>>,
         ) -> bool {
-            trace!("{:?}, {:?}", target, tokens);
 
             if target.is_empty() {
                 return true;
